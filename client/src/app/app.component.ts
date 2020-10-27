@@ -41,6 +41,13 @@ export class AppComponent {
   addStudent() {
     this.students().push(this.newStudent());
   }
+  removeStudent() {
+    this.students().removeAt(this.students().length - 1);
+  }
+
+  reset() {
+    this.students().clear();
+  }
 
   expenses(i: number): FormArray {
     return this.students().at(i).get("expenses") as FormArray

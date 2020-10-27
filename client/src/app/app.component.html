@@ -1,41 +1,52 @@
-<h1>{{title}}</h1>
 
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-  <div formArrayName="students">
+<div class="container">
+  
+  <h2>{{title}}</h2>
+  
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-    <div *ngFor="let student of students().controls; let i=index">
-      <div [formGroupName]="i" style="border: 1px solid blue; padding: 10px; width: 600px; margin-bottom: 5px;">
-        Name :
-        <input type="text" formControlName="name" required>
+    <div formArrayName="students">
 
-        <div formArrayName="expenses">
-          <div *ngFor="let expense of expenses(i).controls; index as expIndex">
-            <!-- <div [formGroupName]="expIndex"> -->
-              Expense {{expIndex + 1}}:
-              <input matInput type="number" [formControlName]="expIndex">
-            <!-- </div> -->
-            <button (click)="removeExpense(i, expIndex)">Remove</button>
-          </div>
-          <button type="button" (click)="addExpense(i)">Add Expense</button>
+      <div *ngFor="let student of students().controls; let i=index">
+        <div [formGroupName]="i">
+          <mat-card class="student">
+            
+            <mat-form-field class="studentName">
+              <mat-label>Name</mat-label>
+              <input matInput type="text" formControlName="name" required>
+            </mat-form-field>
+
+            <div formArrayName="expenses">
+              <div *ngFor="let expense of expenses(i).controls; index as expIndex">
+                <mat-form-field class="expense">
+                  <mat-label>Expense {{expIndex + 1}}</mat-label>
+                  <input matInput type="number" [formControlName]="expIndex">
+                </mat-form-field>
+                <button mat-button color="warn" (click)="removeExpense(i, expIndex)">Remove</button>
+              </div>
+              <button mat-raised-button type="button" (click)="addExpense(i)">Add Expense</button>
+            </div>
+
+          </mat-card>
         </div>
-
-
       </div>
-
     </div>
-  </div>
+    
+    <p>
+      <button mat-stroked-button color="accent" (click)="addStudent()" type="button">Add Student</button>
+      <button mat-stroked-button color="warn" (click)="removeStudent()" type="button">Remove Student</button>
+    </p>
 
-  <p>
-    <button type="button" (click)="addStudent()">Add Student</button>
-  </p>
+    <div class="control">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-stroked-button color="warn" (click)="reset()" type="button">Reset</button>
+    </div>
+  </form>
 
-  <p>
-    <button type="submit">Submit</button>
-  </p>
-
-</form>
-
-<div *ngFor="let result of results">
-  <p>{{ result }}</p>
+  <mat-list class="result">
+    <div *ngFor="let result of results">
+      <mat-list-item>{{ result }}</mat-list-item>
+    </div>
+  </mat-list>
 </div>

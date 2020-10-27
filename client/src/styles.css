@@ -1,9 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
 body {
-  margin-top: 100px;
   display: flex;
   justify-content: center;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+app-root {
+  width: 50%;
+  font-size: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  margin-top: 50px;
+}
+
+.student {
+  border: 1px solid blue;
+  margin-bottom: 10px;
+}
+
+.control {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  app-root {
+    width: 90%;
+  }
+}
+
