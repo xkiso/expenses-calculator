@@ -9,14 +9,11 @@ This application can be demoed at:
 
 ## Launch Dev Environment
 
-- Run ```npm install``` in the root directory
-- Spin up backend dev server using ```npm run dev```
-
-- Run ```npm install``` in the **client** directory
-- Launch Angular frontend using ```npm start```
+- Backend: Run ```npm install``` in the root directory. Spin up backend dev server using ```npm run dev```.
+- Frontend: Run ```npm install``` in the **client** directory. Launch Angular frontend using ```npm start```
 
 ## Launch Prod Environment
 
-- Run ```npm build``` in the **client** directory
-- Run ```npm build``` in the **root** directory
-- Launch application using ```npm start```
+- Run ```npm build``` in the **root** directory.
+- Run ```npm build``` in the **client** directory.
+- Launch application using ```npm start```.
