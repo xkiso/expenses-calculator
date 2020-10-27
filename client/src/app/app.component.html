@@ -1,0 +1,41 @@
+<h1>{{title}}</h1>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+  <div formArrayName="students">
+
+    <div *ngFor="let student of students().controls; let i=index">
+      <div [formGroupName]="i" style="border: 1px solid blue; padding: 10px; width: 600px; margin-bottom: 5px;">
+        Name :
+        <input type="text" formControlName="name" required>
+
+        <div formArrayName="expenses">
+          <div *ngFor="let expense of expenses(i).controls; index as expIndex">
+            <!-- <div [formGroupName]="expIndex"> -->
+              Expense {{expIndex + 1}}:
+              <input matInput type="number" [formControlName]="expIndex">
+            <!-- </div> -->
+            <button (click)="removeExpense(i, expIndex)">Remove</button>
+          </div>
+          <button type="button" (click)="addExpense(i)">Add Expense</button>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <p>
+    <button type="button" (click)="addStudent()">Add Student</button>
+  </p>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+
+</form>
+
+<div *ngFor="let result of results">
+  <p>{{ result }}</p>
+</div>
